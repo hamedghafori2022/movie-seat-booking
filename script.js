@@ -5,9 +5,16 @@ const total = document.getElementById('total');
 const movieSelected = document.getElementById('movie');
 let ticketPrice = +movieSelected.value;
 
+// set movie selected and price to storage
+function setMovieDate(movieIndex,moviePrice){
+  localStorage.setItem('selectedMovieIndex',movieIndex);
+  localStorage.setItem('selectedMoviePrice',moviePrice);
+}
+
 // add event to pick movie
 movieSelected.addEventListener('change', (e)=>{
   ticketPrice = +e.target.value;
+  setMovieDate(e.target.selectedIndex,e.target.value);
   updateSelectedCount();
 })
 
